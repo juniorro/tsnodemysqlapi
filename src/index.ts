@@ -1,8 +1,8 @@
 import { App } from './app';
 
-const main = () => {
+const start = () => {
   const app = new App();
   app.listen();
 }
 
-main();
+start();
