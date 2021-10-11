@@ -5,14 +5,14 @@ import patientRoutes from "./routes/patient.routes";
 export class App {
   private app: Application;
 
-  constructor(private readonly port = 3000 || process.env.SERVER_PORT) {
+  constructor(private readonly port: (string | number) = process.env.SERVER_PORT || 3000) {
     this.app = express();
     this.middleWare();
     this.routes();
   }
 
   async listen(): Promise<void> {
-    await this.app.listen(this.port);
+    this.app.listen(this.port);
     console.info(`Application is running on port ${this.port}`);
   }
 
