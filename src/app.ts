@@ -12,7 +12,7 @@ export class App {
   }
 
   async listen(): Promise<void> {
-    await this.app.listen(this.port);
+    this.app.listen(this.port);
     console.info(`Application is running on port ${this.port}`);
   }
 
