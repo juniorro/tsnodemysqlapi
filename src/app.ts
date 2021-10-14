@@ -11,7 +11,7 @@ export class App {
     this.routes();
   }
 
-  async listen(): Promise<void> {
+  listen(): void {
     this.app.listen(this.port);
     console.info(`Application is running on port ${this.port}`);
   }
