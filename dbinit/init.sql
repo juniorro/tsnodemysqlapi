@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS patientsbd;
+CREATE DATABASE IF NOT EXISTS patients;
 
-USE patientsbd;
+USE patients;
 
 DROP TABLE IF EXISTS patients;
 

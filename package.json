@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
     "start:build": "tsc -p .",
     "start:dev": "nodemon src/index.ts --exec ts-node",
-    "start:prod": "NODE_ENV=prod node dist/index.js"
+    "start:prod": "tsc -p . && NODE_ENV=prod node dist/index.js"
   },
   "author": "",
   "license": "ISC",
