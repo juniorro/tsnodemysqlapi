@@ -1,4 +1,4 @@
-CREATE DATABASE patientsbd;
+CREATE DATABASE IF NOT EXISTS patientsbd;
 
 USE patientsbd;
 
