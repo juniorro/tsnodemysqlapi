@@ -18,4 +18,3 @@ CREATE TABLE patients
     PRIMARY KEY (id),
     CONSTRAINT UQ_Users_Email UNIQUE (email)
 ) AUTO_INCREMENT = 1;
-
