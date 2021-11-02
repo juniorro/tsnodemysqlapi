@@ -4,6 +4,7 @@ import patientRoutes from "./routes/patient.routes";
 
 export class App {
   private app: Application;
+  private readonly const APPLICATION_RUNNING = 'application is running on port:';
 
   constructor(private readonly port: (string | number) = process.env.SERVER_PORT || 3000) {
     this.app = express();
@@ -13,7 +14,7 @@ export class App {
 
   listen(): void {
     this.app.listen(this.port);
-    console.info(`Application is running on port ${this.port}`);
+    console.info(`${APPLICATION_RUNNING} ${this.port}`);
   }
 
   private middleWare(): void {
