@@ -29,10 +29,10 @@ services:
     environment:
       DB_HOST: mysqldb
       DB_USER: 'root'
-      DB_PASSWORD: 'letmein' 
+      DB_PASSWORD: 'letmein'
       DB_NAME: patients
       DB_PORT: 3306
-      DB_CONNECTION_LIMIT: 10 
+      DB_CONNECTION_LIMIT: 10
       SERVER_PORT: 3000
     volumes:
       - ./nodeapp/:/code
