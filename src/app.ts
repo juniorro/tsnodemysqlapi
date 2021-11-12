@@ -1,4 +1,5 @@
 import express, { Application } from "express";
+import cors from 'cors';
 import indexRoutes from "./routes/index.routes";
 import patientRoutes from "./routes/patient.routes";
 
@@ -18,6 +19,7 @@ export class App {
   }
 
   private middleWare(): void {
+    this.app.use(cors({ origin: '*' }));
     this.app.use(express.json());
   }
 
