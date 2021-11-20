@@ -1,11 +1,12 @@
 import express, { Application } from "express";
+import ip from "ip";
 import cors from 'cors';
 import indexRoutes from "./routes/index.routes";
 import patientRoutes from "./routes/patient.routes";
 
 export class App {
   private app: Application;
-  private readonly APPLICATION_RUNNING = 'application is running on port:';
+  private readonly APPLICATION_RUNNING = 'application is running on:';
 
   constructor(private readonly port: (string | number) = process.env.SERVER_PORT || 3000) {
     this.app = express();
@@ -15,7 +16,7 @@ export class App {
 
   listen(): void {
     this.app.listen(this.port);
-    console.info(`${this.APPLICATION_RUNNING} ${this.port}`);
+    console.info(`${this.APPLICATION_RUNNING} ${ip.address()}:${this.port}`);
   }
 
   private middleWare(): void {

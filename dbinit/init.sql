@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS patients;
+CREATE DATABASE IF NOT EXISTS patientsdb;
 
-USE patients;
+USE patientsdb;
 
 DROP TABLE IF EXISTS patients;
 
@@ -18,3 +18,15 @@ CREATE TABLE patients
     PRIMARY KEY (id),
     CONSTRAINT UQ_Users_Email UNIQUE (email)
 ) AUTO_INCREMENT = 1;
+
+DELIMITER //
+BEGIN
+
+    INSERT INTO patients(first_name, last_name, email, address, diagnosis, phone, image_url) VALUES (first_name, last_name, email, address, diagnosis, phone, image_url);
+
+    SET @PATIENT_ID = LAST_INSERT_ID();
+
+    SELECT * FROM patients WHERE id=@PATIENT_ID;
+
+END //
+DELIMITER ;

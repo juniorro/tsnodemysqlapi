@@ -13,7 +13,7 @@ services:
     expose:
       - 3306
     environment:
-      MYSQL_DATABASE: patients
+      MYSQL_DATABASE: patientsdb
       MYSQL_USER: admin
       MYSQL_PASSWORD: letmein
       MYSQL_ROOT_PASSWORD: letmein
@@ -35,7 +35,7 @@ services:
       DB_CONNECTION_LIMIT: 10
       SERVER_PORT: 3000
     volumes:
-      - ./nodeapp/:/code
+      - $HOME/nodeapp/:/code
     ports:
       - 3000:3000
     expose:
