@@ -8,7 +8,7 @@
     "start:dev": "nodemon src/index.ts --exec ts-node",
     "start:prod": "tsc -p . && NODE_ENV=prod node dist/index.js"
   },
-  "author": "",
+  "author": "Junior Toussaint",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.12",
