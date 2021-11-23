@@ -5,7 +5,7 @@ import indexRoutes from "./routes/index.routes";
 import patientRoutes from "./routes/patient.routes";
 
 export class App {
-  private app: Application;
+  private readonly app: Application;
   private readonly APPLICATION_RUNNING = 'application is running on:';
 
   constructor(private readonly port: (string | number) = process.env.SERVER_PORT || 3000) {
