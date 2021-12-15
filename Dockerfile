@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:17.2.0
 WORKDIR /usr/code
 COPY package.json .
 RUN npm install
