@@ -13,7 +13,7 @@ export const getPatients = async (req: Request, res: Response): Promise<Response
   const pool = await connection();
   const result: RestultSet = await pool.query(QUERY.SELECT_PATIENTS);
   return res.status(Code.OK)
-    .json(new HttpResponse(Code.OK, Status.SUCCESS, 'Patients retrieved', result[0]));
+    .json(new HttpResponse(Code.OK, Status.OK, 'Patients retrieved', result[0]));
 };
 
 export const getPatient = async (req: Request, res: Response): Promise<Response<Patient[]>> => {
@@ -21,7 +21,7 @@ export const getPatient = async (req: Request, res: Response): Promise<Response<
   const result: RestultSet = await pool.query(QUERY.SELECT_PATIENT, [req.params.patientId]);
   if (((result[0]) as Array<any>).length > 0) {
     return res.status(Code.OK)
-      .json(new HttpResponse(Code.OK, Status.SUCCESS, 'Patient retrieved', result[0]));
+      .json(new HttpResponse(Code.OK, Status.OK, 'Patient retrieved', result[0]));
   }
   return res.status(Code.NOT_FOUND)
     .json(new HttpResponse(Code.NOT_FOUND, Status.NOT_FOUND, 'Patient not found'));
