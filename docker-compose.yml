@@ -34,8 +34,6 @@ services:
       DB_PORT: 3306
       DB_CONNECTION_LIMIT: 10
       SERVER_PORT: 3000
-    volumes:
-      - $HOME/nodeapp/:/code
     ports:
       - 3000:3000
     expose:
