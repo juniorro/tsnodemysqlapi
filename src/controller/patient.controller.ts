@@ -13,7 +13,7 @@ export const getPatients = async (req: Request, res: Response): Promise<Response
   const pool = await connection();
   const result: ResultSet = await pool.query(QUERY.SELECT_PATIENTS);
   return res.status(Code.OK)
-    .json(new HttpResponse(Code.OK, Status.SUCCESS, 'Patients retrieved', result[0]));
+    .send(new HttpResponse(Code.OK, Status.OK, 'Patients retrieved', result[0]));
 };
 
 export const getPatient = async (req: Request, res: Response): Promise<Response<Patient[]>> => {
@@ -21,10 +21,10 @@ export const getPatient = async (req: Request, res: Response): Promise<Response<
   const result: ResultSet = await pool.query(QUERY.SELECT_PATIENT, [req.params.patientId]);
   if (((result[0]) as Array<any>).length > 0) {
     return res.status(Code.OK)
-      .json(new HttpResponse(Code.OK, Status.SUCCESS, 'Patient retrieved', result[0]));
+      .send(new HttpResponse(Code.OK, Status.OK, 'Patient retrieved', result[0]));
   }
   return res.status(Code.NOT_FOUND)
-    .json(new HttpResponse(Code.NOT_FOUND, Status.NOT_FOUND, 'Patient not found'));
+    .send(new HttpResponse(Code.NOT_FOUND, Status.NOT_FOUND, 'Patient not found'));
 };
 
 export const createPatient = async (req: Request, res: Response): Promise<Response<Patient>> => {
@@ -33,7 +33,7 @@ export const createPatient = async (req: Request, res: Response): Promise<Respon
   const result: ResultSet = await pool.query(QUERY.CREATE_PATIENT, [patient]);
   patient = { id: (result[0] as ResultSetHeader).insertId, ...req.body };
   return res.status(Code.CREATED)
-    .json(new HttpResponse(Code.CREATED, Status.CREATED, 'Patient created', patient));
+    .send(new HttpResponse(Code.CREATED, Status.CREATED, 'Patient created', patient));
 };
 
 export const updatePatient = async (req: Request, res: Response): Promise<Response<Patient>> => {
@@ -43,10 +43,10 @@ export const updatePatient = async (req: Request, res: Response): Promise<Respon
   if (((result[0]) as Array<any>).length > 0) {
     const result: ResultSet = await pool.query(QUERY.UPDATE_PATIENT, [...Object.values(patient), req.params.patientId]);
     return res.status(Code.OK)
-      .json(new HttpResponse(Code.OK, Status.OK, 'Patient updated', { ...patient, id: req.params.patientId }));
+      .send(new HttpResponse(Code.OK, Status.OK, 'Patient updated', { ...patient, id: req.params.patientId }));
   }
   return res.status(Code.NOT_FOUND)
-    .json(new HttpResponse(Code.NOT_FOUND, Status.NOT_FOUND, 'Patient not found'));
+    .send(new HttpResponse(Code.NOT_FOUND, Status.NOT_FOUND, 'Patient not found'));
 };
 
 export const deletePatient = async (req: Request, res: Response): Promise<Response<Patient>> => {
@@ -55,8 +55,8 @@ export const deletePatient = async (req: Request, res: Response): Promise<Respon
   if (((result[0]) as Array<any>).length > 0) {
     const result: ResultSet = await pool.query(QUERY.DELETE_PATIENT, [req.params.patientId]);
     return res.status(Code.OK)
-      .json(new HttpResponse(Code.OK, Status.OK, 'Patient deleted'));
+      .send(new HttpResponse(Code.OK, Status.OK, 'Patient deleted'));
   }
   return res.status(Code.NOT_FOUND)
-    .json(new HttpResponse(Code.NOT_FOUND, Status.NOT_FOUND, 'Patient not found'));
+    .send(new HttpResponse(Code.NOT_FOUND, Status.NOT_FOUND, 'Patient not found'));
 };
