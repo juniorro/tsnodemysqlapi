@@ -44,7 +44,7 @@ export const createPatient = async (req: Request, res: Response): Promise<Respon
   let patient: Patient = { ...req.body };
   try {
     const pool = await connection();
-    const result: ResultSet = await pool.query(QUERY.CREATE_PATIENT, [patient]);
+    const result: ResultSet = await pool.query(QUERY.CREATE_PATIENT, Object.values(patient));
     patient = { id: (result[0] as ResultSetHeader).insertId, ...req.body };
     return res.status(Code.CREATED)
       .send(new HttpResponse(Code.CREATED, Status.CREATED, 'Patient created', patient));
@@ -62,7 +62,6 @@ export const updatePatient = async (req: Request, res: Response): Promise<Respon
     const result: ResultSet = await pool.query(QUERY.SELECT_PATIENT, [req.params.patientId]);
     if (((result[0]) as Array<any>).length > 0) {
       const result: ResultSet = await pool.query(QUERY.UPDATE_PATIENT, [...Object.values(patient), req.params.patientId]);
-      console.log(result);
       return res.status(Code.OK)
         .send(new HttpResponse(Code.OK, Status.OK, 'Patient updated', { ...patient, id: req.params.patientId }));
     } else {
