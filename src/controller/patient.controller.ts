@@ -41,7 +41,7 @@ export const getPatient = async (req: Request, res: Response): Promise<Response<
 };
 
 export const createPatient = async (req: Request, res: Response): Promise<Response<Patient>> => {
-  let patient: Patient = { id: null, created_at: new Date(), ...req.body };
+  let patient: Patient = { ...req.body };
   try {
     const pool = await connection();
     const result: ResultSet = await pool.query(QUERY.CREATE_PATIENT, [patient]);
