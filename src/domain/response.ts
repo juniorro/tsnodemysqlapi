@@ -1,5 +1,5 @@
-import { Code } from "../enum/code.enum";
-import { Status } from "../enum/status.enum";
+import { Code } from '../enum/code.enum';
+import { Status } from '../enum/status.enum';
 
 export class HttpResponse {
     constructor(private statusCode: Code, private httpStatus: Status, private message: string, private data?: {}) {

@@ -1,7 +1,7 @@
-import express, { Application } from "express";
-import ip from "ip";
+import express, { Application } from 'express';
+import ip from 'ip';
 import cors from 'cors';
-import patientRoutes from "./routes/patient.routes";
+import patientRoutes from './routes/patient.routes';
 import { HttpResponse } from './domain/response';
 import { Code } from './enum/code.enum';
 import { Status } from './enum/status.enum';
