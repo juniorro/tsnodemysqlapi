@@ -13,6 +13,7 @@ CREATE TABLE patients
     address    VARCHAR(255) DEFAULT NULL,
     diagnosis  VARCHAR(255) DEFAULT NULL,
     phone      VARCHAR(30)  DEFAULT NULL,
+    status     VARCHAR(30)  DEFAULT 'Pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     image_url  VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (id),
